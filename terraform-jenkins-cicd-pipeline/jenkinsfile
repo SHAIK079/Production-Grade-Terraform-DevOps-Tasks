@@ -8,27 +8,27 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                dir('terraform-jenkins-cicd-pipeline') {
+                    sh 'terraform init'
+                }
             }
         }
 
         stage('Terraform Validate') {
             steps {
-                sh 'terraform validate'
+                dir('terraform-jenkins-cicd-pipeline') {
+                    sh 'terraform validate'
+                }
             }
         }
 
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -out=tfplan'
+                dir('terraform-jenkins-cicd-pipeline') {
+                    sh 'terraform plan -out=tfplan'
+                }
             }
         }
 
@@ -40,7 +40,9 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve tfplan'
+                dir('terraform-jenkins-cicd-pipeline') {
+                    sh 'terraform apply -auto-approve tfplan'
+                }
             }
         }
     }
