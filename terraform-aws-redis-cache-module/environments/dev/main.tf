@@ -4,7 +4,7 @@ terraform {
 
     aws = {
 
-      source  = "hashicorp/aws"
+      source = "hashicorp/aws"
 
       version = "~> 6.0"
 
@@ -24,45 +24,45 @@ provider "aws" {
 module "vpc" {
 
 
-source = "../../modules/vpc"
+  source = "../../modules/vpc"
 
 
 
-name = "dev"
+  name = "dev"
 
 
 
-vpc_cidr = "10.0.0.0/16"
+  vpc_cidr = "10.0.0.0/16"
 
 
 
-azs = [
+  azs = [
 
-"us-east-1a",
+    "us-east-1a",
 
-"us-east-1b"
+    "us-east-1b"
 
-]
-
-
-
-public_subnet_cidrs = [
-
-"10.0.1.0/24",
-
-"10.0.2.0/24"
-
-]
+  ]
 
 
 
-private_subnet_cidrs = [
+  public_subnet_cidrs = [
 
-"10.0.11.0/24",
+    "10.0.1.0/24",
 
-"10.0.12.0/24"
+    "10.0.2.0/24"
 
-]
+  ]
+
+
+
+  private_subnet_cidrs = [
+
+    "10.0.11.0/24",
+
+    "10.0.12.0/24"
+
+  ]
 
 
 }
@@ -71,32 +71,32 @@ private_subnet_cidrs = [
 module "ec2" {
 
 
-source = "../../modules/ec2"
+  source = "../../modules/ec2"
 
 
 
-name = "sam-app"
+  name = "sam-app"
 
 
 
-vpc_id = module.vpc.vpc_id
+  vpc_id = module.vpc.vpc_id
 
 
 
-private_subnet_ids = module.vpc.private_subnet_ids
+  private_subnet_ids = module.vpc.private_subnet_ids
 
 
 
-ami_id = "ami-002192a70217ac181"
+  ami_id = "ami-002192a70217ac181"
 
 
 
-instance_type = "t3.micro"
+  instance_type = "t3.micro"
 
 
 
 
-instance_count = 2
+  instance_count = 2
 
 
 
@@ -107,27 +107,27 @@ instance_count = 2
 module "redis" {
 
 
-source = "../../modules/redis"
+  source = "../../modules/redis"
 
 
 
-name = "sam-redis"
+  name = "sam-redis"
 
 
 
-vpc_id = module.vpc.vpc_id
+  vpc_id = module.vpc.vpc_id
 
 
 
-private_subnet_ids = module.vpc.private_subnet_ids
+  private_subnet_ids = module.vpc.private_subnet_ids
 
 
 
-ec2_security_group_id = module.ec2.security_group_id
+  ec2_security_group_id = module.ec2.security_group_id
 
 
 
-node_type = "cache.t3.micro"
+  node_type = "cache.t3.micro"
 
 
 }

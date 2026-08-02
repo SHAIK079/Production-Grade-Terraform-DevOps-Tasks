@@ -1,6 +1,6 @@
 variable "name" {
 
-type = string
+  type = string
 
 }
 
@@ -8,7 +8,7 @@ type = string
 
 variable "vpc_id" {
 
-type = string
+  type = string
 
 }
 
@@ -16,7 +16,7 @@ type = string
 
 variable "private_subnet_ids" {
 
-type = list(string)
+  type = list(string)
 
 }
 
@@ -24,7 +24,7 @@ type = list(string)
 
 variable "ec2_security_group_id" {
 
-type = string
+  type = string
 
 }
 
@@ -33,10 +33,10 @@ type = string
 variable "node_type" {
 
 
-type = string
+  type = string
 
 
-default = "cache.t3.micro"
+  default = "cache.t3.micro"
 
 
 }

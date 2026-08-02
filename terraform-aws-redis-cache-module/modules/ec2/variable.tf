@@ -1,6 +1,6 @@
 variable "name" {
 
-type = string
+  type = string
 
 }
 
@@ -8,7 +8,7 @@ type = string
 
 variable "vpc_id" {
 
-type = string
+  type = string
 
 }
 
@@ -16,7 +16,7 @@ type = string
 
 variable "private_subnet_ids" {
 
-type = list(string)
+  type = list(string)
 
 }
 
@@ -24,7 +24,7 @@ type = list(string)
 
 variable "ami_id" {
 
-type = string
+  type = string
 
 }
 
@@ -32,9 +32,9 @@ type = string
 
 variable "instance_type" {
 
-type = string
+  type = string
 
-default = "t2.micro"
+  default = "t2.micro"
 
 }
 
@@ -42,8 +42,8 @@ default = "t2.micro"
 
 variable "instance_count" {
 
-type = number
+  type = number
 
-default = 2
+  default = 2
 
 }
