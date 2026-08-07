@@ -160,17 +160,5 @@ main.tf
 output.tf
 terraform.tfvars
 variable.tf
-```
 
----
 
-## 💡 Need help extending this stack?
-
-I can also add:
-
-- detailed child module READMEs
-- variable documentation for each module
-- a sample `terraform.tfvars` file template
-- a secure bastion/SSH access example
-
-Happy to make it even more developer-friendly! 🌟
